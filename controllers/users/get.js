@@ -1,4 +1,4 @@
-const usersData = require("../usersData");
+const usersData = require("../../usersData");
 
 const get = (req, res) => {
   if (req.query.location) {
