@@ -1,55 +1,53 @@
-class Test {
-  arr = [];
-    sum = 0;
-  constructor(num) {
-    this.arr.push(num);
+class User {
+  receivedCash = [];
+
+  constructor(cash) {
+    this.addCash = cash;
   }
 
-  log(text, arr) {
-    console.log(text, " ", arr);
+  log() {
+    console.log("received cash array ======>", this.receivedCash);
   }
 
-  a() {
-    return this.arr
+  get getCash() {
+    this.calc();
   }
 
-  get amount() {
-    return this.calc();
-  }
-
-  set add(num) {
-    this.arr.push(num);
-    this.log("added num is ", num);
-    // console.log("added num is ", num);
+  set addCash(cash) {
+    this.receivedCash.push(cash);
+    this.log();
+    console.log("you get ", cash);
   }
 
   calc() {
     let sum = 0;
-    for (let num of this.arr) {
+    for (let num of this.receivedCash) {
       sum += num;
     }
-    
-    console.log("current sum is ", this.sum);
-    return this.sum
+    console.log("current cash is ", sum);
   }
 }
 
-const test = new Test(10);
-test.add = 20;
-test.add = 30;
-test.calc();
- console.log(test.amount) 
-// test.log('current arr is ', test.arr)
+const user = new User(10);
 
-class ChildTest extends Test {
-  constructor() {
-    super();
+user.addCash = 20;
+user.addCash = 30;
+user.getCash;
+
+class SuperUser extends User {
+  receivedCash = [];
+  constructor(cash) {
+    super(cash);
+    this.receivedCash.push(cash);
   }
 
-  childLog() {
-    super.log("test", 10);
+  addCashSuper(cash) {
+    super.addCash = cash * 2;
   }
 }
 
-const child = new ChildTest();
-child.childLog();
+const superUser = new SuperUser(100);
+
+superUser.addCashSuper(200);
+superUser.addCashSuper(300);
+superUser.getCash;
